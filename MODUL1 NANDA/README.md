@@ -12,4 +12,4 @@ I use Bootstrap CDN, so make sure you're connected to internet if you want to tr
 <img src = 'https://github.com/sonadztux/WAD-NANDA-1202184077/blob/master/MODUL1%20NANDA/static/img/product.png' width="800" height="500"/>
 
 ### Live Demo
-If you're to lazy to clone and running my code on your local computer, you can easily visit the live demo website here => [DEMO MODUL1](https://sonadztux.pythonanywhere.com/wad/1)
+If you're to lazy to clone and running my code on your local computer, you can easily visit the live demo website here => [DEMO MODUL1](http://sonadztuxdev.pythonanywhere.com/wad/satu/)
