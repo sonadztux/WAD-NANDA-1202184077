@@ -1,6 +1,4 @@
-<?php
-$room = $_GET['room'];
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,7 +29,7 @@ $room = $_GET['room'];
     <div class="container mt-5">
         <div class="row">
             <div class="col">
-                <form method="POST" action="mybooking.php">
+                <form metohd="POST" action="mybooking.php">
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" class="form-control" name="name" id="name" required>
@@ -84,7 +82,7 @@ $room = $_GET['room'];
                         <label for="phone_number">Phone Number</label>
                         <input type="number" class="form-control" id="phone_number" name="phone_number" required>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block">Book</button>
+                    <input name="submit" class="btn btn-primary btn-block">Book</input>
                 </form>
 
             </div>

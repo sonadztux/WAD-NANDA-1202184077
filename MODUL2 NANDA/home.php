@@ -34,7 +34,7 @@
             </div>
         </div>
         <div class="container mt-5">
-            <form action="booking.php" method="GET">
+            <form action="booking.php" method="post">
                 <div class="form-row">
                     <div class="col">
                         <div class="card text-center" style="width: 18rem;">
