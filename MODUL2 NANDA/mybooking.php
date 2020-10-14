@@ -9,11 +9,11 @@ $roomservice = $_POST['roomservice'];
 $breakfast = $_POST['breakfast'];
 $phone_number = $_POST['phone_number'];
 if($roomtype == "Standard"){
-    $roomprice = $duration**90;
+    $roomprice = $duration*90;
 }else if($roomtype == "Superior"){
-    $roomprice = $duration**120;
+    $roomprice = $duration*150;
 }else{
-    $roomprice = $duration**200;
+    $roomprice = $duration*200;
 }    
 ?>
 
@@ -71,11 +71,11 @@ if($roomtype == "Standard"){
                     <td>
                         <ul>
                             <?php 
-                                if($roomservice){
+                                if(isset($roomservice)){
                                     echo "<li>Room Services</li>";
                                     $roomprice += 20;
                                 }
-                                if($breakfast){
+                                if(isset($breakfast)){
                                     echo "<li>Breakfast</li>";
                                     $roomprice += 20;
                                 }
