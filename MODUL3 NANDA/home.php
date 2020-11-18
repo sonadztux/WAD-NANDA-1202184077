@@ -1,15 +1,16 @@
 <?php
-
-$event = query("SELECT * FROM event_table");
+include('config.php');
+$query = "SELECT * FROM event_table";
+$events = mysqli_query($conn, $query);
 ?>
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
+  <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
   <title>Home</title>
 
   <!-- Bootstrap CSS -->
@@ -18,65 +19,41 @@ $event = query("SELECT * FROM event_table");
 </head>
 
 <body>
-  <nav class="navbar navbar-expand navbar-dark bg-info">
-    <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link active" href="home.php"><b>EAD EVENTS</b><span class="sr-only">(current)</span></a>
+  <nav class="navbar navbar-expand-lg bg-info">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand text-white" href="home.php">EAD EVENTS</a>
       </div>
-    </div>
-    <div class="collapse navbar-collapse justify-content-end">
-      <table style="width: 25%;">
-        <form class="form-inline my-2 my-lg-0">
-          <tr>
-            <td>
-              <a href="home.php"><button class="btn btn-outline-light" type="button">Home</button></a>
-            </td>
-            <td>
-              <a href="buat_event.php"><button class="btn btn-outline-light" type="button">Buat Event</button></a>
-            </td>
-          </tr>
-        </form>
-      </table>
+      <ul class="nav navbar-nav">
+        <li class="nav-item"><a class="nav-link text-white" href="home.php">Home</a></li>
+        <li class="nav-item active"><a class="nav-link btn btn-outline-light" href="create.php">Buat Event</a></li>
+      </ul>
     </div>
   </nav>
 
-  <div class="container">
-    <h3 class="text-info text-center m-4">WELCOME TO EAD EVENTS!</h3>
-    <?php $i = 1; ?>
-    <?php foreach ($event as $row) : ?>
-
-      <div class="card" style="width: 18rem;">
-        <img src="static/img/<?php echo $row['gambar'] ?>" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title"><?= $row["name"] ?></h5>
-          <br>
-          <table>
-            <tr>
-              <td>
-                <p class="card-text"><img src="static/img/calendar.png" alt="" width="20" height="20">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $row["tanggal"] ?></p>
-                <p class="card-text"><img src="static/img/pin.png" alt="" width="20" height="25">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $row["tempat"] ?></p>
-              </td>
-            </tr>
-          </table>
-          <br>
-
-          <p class="card-text">Kategori : Event <?= $row["kategori"] ?></p>
-
-          <hr>
-          <div style="text-align: right;">
-            <a href="details.php" class="btn btn-primary">Detail</a>
+  <div class="container mt-4">
+    <div class="row justify-content-center">
+      <h4 class="text-info"> WELCOME TO EAD EVENTS! </h4>
+    </div>
+    <div class="row mt-4">
+      <?php while ($event = mysqli_fetch_assoc($events)) : ?>
+        <div class="col">
+          <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="static/img/<?= $event["gambar"]; ?>" height="170px">
+            <div class="card-body">
+              <h5 class="card-title"><?= $event["name"] ?></h5>
+              <p class="card-text"><?= $event["tanggal"] ?></p>
+              <p class="card-text"><?= $event["tempat"] ?></p>
+              <p class="card-text">Kategori : Event <?= $event["kategori"] ?></p>
+            </div>
+            <div class="card-footer text-right">
+              <a href="detail.php?id=<?= $event["id"] ?>" class="btn btn-primary">Detail</a>
+            </div>
           </div>
-
         </div>
-      </div>
-
-      <?php $i++; ?>
-    <?php endforeach; ?>
+      <?php endwhile; ?>
+    </div>
   </div>
-
-  <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 
 </body>
 
