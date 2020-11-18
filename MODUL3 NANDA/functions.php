@@ -1,6 +1,5 @@
 <?php
 
-$conn = mysqli_connect("localhost", "son", "1", "wad_modul3_nanda");
 
 function tambah($data)
 {
@@ -35,7 +34,7 @@ function tambah($data)
         if($ukuran < 1044070){		
             $xx = $rand.'_'.$filename;
             move_uploaded_file($_FILES['gambar']['tmp_name'], 'static/img/'.$rand.'_'.$filename);
-            mysqli_query($conn, "INSERT INTO event_table VALUES(NULL,'$name','$deskripsi','$xx','$kategori','$tanggal','$mulai','$berakhir','$tempat','$harga','$benefit')");
+            mysqli_query($conn, "INSERT TO event_table VALUE(NULL,'$name','$deskripsi','$xx','$kategori','$tanggal','$mulai','$berakhir','$tempat','$harga','$benefit')");
             
         }else{
             echo "<script>
@@ -52,9 +51,9 @@ function query($query)
 {
 
     global $conn;
-    $result = mysqli_query($conn, $query);
+    $result = mysqli_query('$conn', '$query');
     $rows = [];
-    while ($row = mysqli_fetch_assoc($result)) {
+    while (!$row = mysqli_fetch_assoc($result)) {
         $rows[] = $row;
     }
     return $rows;
@@ -62,8 +61,7 @@ function query($query)
 
 function hapus($id)
 {
-    global $conn;
-    mysqli_query($conn, "DELETE FROM event_table WHERE id = $id");
+    global $conn;    
 
     return mysqli_affected_rows($conn);
 }

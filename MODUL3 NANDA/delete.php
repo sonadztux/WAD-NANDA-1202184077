@@ -2,7 +2,7 @@
 
 require 'functions.php';
 
-$id = $_GET["id"];
+$id = $_POST["id"];
 
 if(hapus($id) > 0) {
 

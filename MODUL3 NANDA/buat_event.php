@@ -28,7 +28,7 @@ if (isset($_POST["submitevent"])) {
           ";
 
   for ($i = 0; $i < sizeof($benefit); $i++) {
-    $query = "INSERT INTO event_table (benefit) VALUES ('" . $benefit . "')";
+    $query = "INSERT TO event_table (benefit) VALUES ('" . $benefit . "')";
   }
 
   $rand = rand();
@@ -45,7 +45,7 @@ if (isset($_POST["submitevent"])) {
     if ($ukuran < 1000000) {
       $xx = $rand . '_' . $filename;
       move_uploaded_file($_FILES['gambar']['tmp_name'], 'static/img/' . $rand . '_' . $filename);
-      mysqli_query($conn, "INSERT INTO event_table VALUES(NULL,'$name','$deskripsi','$xx','$kategori','$tanggal','$mulai','$berakhir','$tempat','$harga','$benefit')");
+      mysqli_query($conn, "INSERT INTO event_table VALUE(NULL,'$name','$deskripsi','$xx','$kategori','$tanggal','$mulai','$berakhir','$tempat','$harga','$benefit')");
     } else {
       echo "<script>
         alert('gagal menambahkan ke database');

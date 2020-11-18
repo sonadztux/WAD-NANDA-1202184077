@@ -1,5 +1,4 @@
 <?php
-require 'functions.php';
 
 $event = query("SELECT * FROM event_table");
 ?>
