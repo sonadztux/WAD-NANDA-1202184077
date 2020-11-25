@@ -13,15 +13,16 @@ if (isset($_POST["update"])) {
     $nama = $_POST["nama"];
     $nohp = $_POST["nohp"];
     $navbar = $_POST["navbar"];
-    
 
-    if (empty($_POST["sandi"]) && empty($_POST["confirmsandi"])) {
+    setcookie("navbar", $navbar, strtotime('+1 days'), '/');
+
+    if (!empty($_POST["sandi"]) && !empty($_POST["confirmsandi"])) {
         if ($_POST["sandi"] === $_POST["confirmsandi"]) {
             $sandi = password_hash($_POST["sandi"], PASSWORD_DEFAULT);
 
-            $query = "UPDATE user SET nama='$nama', no_hp=$nohp, password='$sandi', WHERE id=id";
+            $query = "UPDATE user SET nama='$nama', no_hp=$nohp, password='$sandi', WHERE id=$id";
             $update = mysqli_query($conn, $query);
-            if (!$update) {
+            if ($update) {
                 $_SESSION["nama"] = $nama;
                 $message = "Profil berhasil diperbarui";
             }
