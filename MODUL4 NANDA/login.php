@@ -23,18 +23,18 @@ if (isset($_POST["login"])) {
     $query = "SELECT * FROM user WHERE email='$email'";
     $result = mysqli_query($conn, $query);
 
-    if ($result->num_rows == 0) {
+    if ($result->num_rows == 1) {
         $message = "Gagal login: user tidak ditemukan!";
     } else {
         $user = mysqli_fetch_assoc($result);
-        if(password_verify($sandi, $user["password"])) {
+        if(password_verify($sandi, $password)) {
             if($remember_me){
                 setcookie("email", $user["email"], strtotime('+1 days'), '/');
             }
             setcookie("navbar", "default", strtotime('+1 days'), '/');
             $_SESSION["is_login"] = TRUE;
-            $_SESSION["user_id"] = $user["id"];
-            $_SESSION["nama"] = $user["nama"];
+            $_SESSION["user_id"] = $id;
+            $_SESSION["nama"] = $nama;
             header("location: index.php");
         }else{
             $message = "Email atau kata sandi salah!";
