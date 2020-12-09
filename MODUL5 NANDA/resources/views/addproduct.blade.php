@@ -5,8 +5,7 @@
     <h3 class="text-white">Input Product</h3>
 </div>
 <div class="row justify-content-center text-white">
-    <form method="POST" action="" class="w-75" enctype="multipart/form-data">
-        @csrf    
+    <form method="POST" action="" class="w-75" enctype="multipart/form-data">        
         <div class="form-group">
             <label for="name">Product Name</label>
             <input type="text" class="form-control" id="name" name="name">
