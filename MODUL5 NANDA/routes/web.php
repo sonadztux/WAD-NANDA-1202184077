@@ -28,8 +28,8 @@ Route::post('/product/update/{id}', [ProductController::class, 'update'])->name(
 Route::get('/product/delete/{id}', [ProductController::class, 'delete'])->name('product.delete');
 
 Route::get('/order', [OrderController::class, 'index'])->name('order.index');
-Route::post('/order/history', [OrderController::class, 'history'])->name('order.history');
+Route::get('/order/history', [OrderController::class, 'history'])->name('order.history');
 
-Route::get('/order/', [OrderController::class, 'process_view'])->name('order.process_view');
+Route::get('/order/{id}', [OrderController::class, 'process_view'])->name('order.process_view');
 Route::post('/order/{id}', [OrderController::class, 'process'])->name('order.process');
 

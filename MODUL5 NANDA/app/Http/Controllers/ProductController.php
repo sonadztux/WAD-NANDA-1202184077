@@ -12,7 +12,7 @@ class ProductController extends Controller {
         return view('product', compact('products'));
     }
 
-    public function add($request) {
+    public function add(Request $request) {
         $request->validate(['file' => 'required|mimes:jpg,jpeg,png,gif|max:2048']);
         $filename = time().'.'.$request->file->extension();
         $request->file->move(public_path('storage'), $filename);
@@ -24,6 +24,7 @@ class ProductController extends Controller {
         $product->stock = $request->stock;
         $product->img_path = $filename;        
 
+        $product->save();
         return redirect(route('product.index'));
     }
 
